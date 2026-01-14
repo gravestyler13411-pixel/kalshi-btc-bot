@@ -1,0 +1,6 @@
+import requests
+from config import DISCORD_WEBHOOK
+
+def alert(msg):
+    if DISCORD_WEBHOOK:
+        requests.post(DISCORD_WEBHOOK, json={"content": msg})
