@@ -1,0 +1,28 @@
+import time
+from datetime import date
+from config import TRADE_SIZE, DAILY_LOSS_LIMIT, BOT_ENABLED
+from discord_alerts import alert
+
+daily_pnl = 0.0
+current_day = date.today()
+
+alert("🤖 Kalshi BTC bot started")
+
+while True:
+    if not BOT_ENABLED:
+        time.sleep(60)
+        continue
+
+    if date.today() != current_day:
+        daily_pnl = 0.0
+        current_day = date.today()
+        alert("🔄 New trading day. P&L reset.")
+
+    if daily_pnl <= -DAILY_LOSS_LIMIT:
+        alert("🛑 Daily $5 loss limit hit. Bot paused.")
+        time.sleep(3600)
+        continue
+
+    # PLACEHOLDER TRADE LOGIC
+    # (Real trading logic added AFTER you confirm it’s running)
+    time.sleep(300)
