@@ -1,0 +1,10 @@
+import os
+
+TRADE_SIZE = 1.0
+DAILY_LOSS_LIMIT = 5.0
+
+KALSHI_API_KEY = os.getenv("KALSHI_API_KEY")
+KALSHI_PRIVATE_KEY = os.getenv("KALSHI_PRIVATE_KEY")
+DISCORD_WEBHOOK = os.getenv("DISCORD_WEBHOOK")
+
+BOT_ENABLED = os.getenv("BOT_ENABLED", "true").lower() == "true"
